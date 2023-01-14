@@ -5,14 +5,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float turnSpeed = 20f;
+    [SerializeField] private float turnSpeed = 5f;
+    [SerializeField] private float rotateSpeed = 10f;
+    [SerializeField] private float liftSpeed = 2f;
     [SerializeField] private Vector2 moveInput;
     [SerializeField] private Vector2 moveLift;
     private PlayerInputActions inputActions;
     public GameObject lift;
 
-    private float maxLiftY = 8f;
-    private float minLiftY = 2.7f;
+    private float maxLiftY = 2f;
+    private float minLiftY = 0.1f;
 
 
     private void Awake()
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
         if (moveInput.x != 0)
         {
-            transform.Rotate(Vector3.up, turnSpeed * moveInput.x * Time.deltaTime);
+            transform.Rotate(Vector3.up, rotateSpeed * moveInput.x * Time.deltaTime);
         }
         if (moveInput.y != 0)
         {
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
         {
             if (lift.transform.position.y < maxLiftY)
             {
-                lift.transform.Translate(Vector3.up * Time.deltaTime * 10 * moveLift.y);
+                lift.transform.Translate(Vector3.up * Time.deltaTime * liftSpeed * moveLift.y);
                 Debug.Log(lift.transform.position.y);
             }
         }
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
         {
             if (lift.transform.position.y > minLiftY)
             {
-                lift.transform.Translate(Vector3.up * Time.deltaTime * 10 * moveLift.y);
+                lift.transform.Translate(Vector3.up * Time.deltaTime * liftSpeed * moveLift.y);
                 Debug.Log(lift.transform.position.y);
             }
         }

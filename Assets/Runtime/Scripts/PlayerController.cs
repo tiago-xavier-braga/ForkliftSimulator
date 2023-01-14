@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float turnSpeed = 5f;
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float liftSpeed = 2f;
     [SerializeField] private Vector2 moveInput;
     [SerializeField] private Vector2 moveLift;
+    [SerializeField] private Rigidbody rb;
     private PlayerInputActions inputActions;
     public GameObject lift;
 
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         inputActions = new PlayerInputActions();
         inputActions.PlayerControls.Enable();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -35,6 +38,7 @@ public class PlayerController : MonoBehaviour
         if (moveInput.y != 0)
         {
             transform.Translate(Vector3.forward * Time.deltaTime * turnSpeed * moveInput.y);
+            //rb.velocity = Vector3.forward * moveInput * turnSpeed * Time.deltaTime;
         }
 
         if (moveLift.y > 0f)

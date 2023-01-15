@@ -16,9 +16,12 @@ public class PlayerController : MonoBehaviour
     private float maxLiftY = 2f;
     private float minLiftY = 0.1f;
 
+    public Rigidbody rb;
+
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         inputActions = new PlayerInputActions();
         inputActions.PlayerControls.Enable();
     }

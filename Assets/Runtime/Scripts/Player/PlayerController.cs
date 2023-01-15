@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         moveInput = inputActions.PlayerControls.Movement.ReadValue<Vector2>();
         moveLift = inputActions.PlayerControls.Lift.ReadValue<Vector2>();
 
-        if (moveInput.x != 0 && moveInput.y != 0)
+        if (moveInput.x != 0)
         {
             transform.Rotate(Vector3.up, rotateSpeed * moveInput.x * Time.deltaTime);
         }

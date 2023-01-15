@@ -44,6 +44,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Camera"",
+                    ""type"": ""Button"",
+                    ""id"": ""be85c911-1df6-422b-8379-1cc90bd45e9c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -134,6 +143,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Lift"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b48a0db-a0bd-4bb3-bbe6-5ccffc8db970"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4247844b-0776-4b85-aaf3-692cac80f2e8"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""052e462a-46fb-4a2b-bbb6-c6151624db46"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -150,6 +192,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
         m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
         m_PlayerControls_Lift = m_PlayerControls.FindAction("Lift", throwIfNotFound: true);
+        m_PlayerControls_Camera = m_PlayerControls.FindAction("Camera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -211,12 +254,14 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
     private readonly InputAction m_PlayerControls_Movement;
     private readonly InputAction m_PlayerControls_Lift;
+    private readonly InputAction m_PlayerControls_Camera;
     public struct PlayerControlsActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerControlsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
         public InputAction @Lift => m_Wrapper.m_PlayerControls_Lift;
+        public InputAction @Camera => m_Wrapper.m_PlayerControls_Camera;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -232,6 +277,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Lift.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLift;
                 @Lift.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLift;
                 @Lift.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLift;
+                @Camera.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCamera;
+                @Camera.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCamera;
+                @Camera.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCamera;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -242,6 +290,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Lift.started += instance.OnLift;
                 @Lift.performed += instance.OnLift;
                 @Lift.canceled += instance.OnLift;
+                @Camera.started += instance.OnCamera;
+                @Camera.performed += instance.OnCamera;
+                @Camera.canceled += instance.OnCamera;
             }
         }
     }
@@ -259,5 +310,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnLift(InputAction.CallbackContext context);
+        void OnCamera(InputAction.CallbackContext context);
     }
 }

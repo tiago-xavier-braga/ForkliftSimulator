@@ -53,6 +53,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InputManager"",
+                    ""type"": ""Button"",
+                    ""id"": ""5661bd42-a31d-4b51-a790-2adc57948c02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -176,6 +185,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3324d5d4-0366-4026-92ed-d13e59858ae5"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""InputManager"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91a67503-094c-4139-9eb2-5b2d17f58bdc"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InputManager"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -193,6 +224,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
         m_PlayerControls_Lift = m_PlayerControls.FindAction("Lift", throwIfNotFound: true);
         m_PlayerControls_Camera = m_PlayerControls.FindAction("Camera", throwIfNotFound: true);
+        m_PlayerControls_InputManager = m_PlayerControls.FindAction("InputManager", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -255,6 +287,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControls_Movement;
     private readonly InputAction m_PlayerControls_Lift;
     private readonly InputAction m_PlayerControls_Camera;
+    private readonly InputAction m_PlayerControls_InputManager;
     public struct PlayerControlsActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -262,6 +295,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
         public InputAction @Lift => m_Wrapper.m_PlayerControls_Lift;
         public InputAction @Camera => m_Wrapper.m_PlayerControls_Camera;
+        public InputAction @InputManager => m_Wrapper.m_PlayerControls_InputManager;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -280,6 +314,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Camera.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCamera;
                 @Camera.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCamera;
                 @Camera.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCamera;
+                @InputManager.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInputManager;
+                @InputManager.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInputManager;
+                @InputManager.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInputManager;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -293,6 +330,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Camera.started += instance.OnCamera;
                 @Camera.performed += instance.OnCamera;
                 @Camera.canceled += instance.OnCamera;
+                @InputManager.started += instance.OnInputManager;
+                @InputManager.performed += instance.OnInputManager;
+                @InputManager.canceled += instance.OnInputManager;
             }
         }
     }
@@ -311,5 +351,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnLift(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
+        void OnInputManager(InputAction.CallbackContext context);
     }
 }

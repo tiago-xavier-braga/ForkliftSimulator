@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,8 +25,21 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         inputActions = new PlayerInputActions();
         inputActions.PlayerControls.Enable();
+        inputActions.PlayerControls.InputManager.performed += onPlayerInput;
     }
 
+    private void onPlayerInput(InputAction.CallbackContext obj)
+    {
+        if (obj.control.name == "r")
+        {
+            Debug.Log("r");
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        else if (obj.control.name == "enter")
+        {
+
+        }
+    }
     private void FixedUpdate()
     {
         moveInput = inputActions.PlayerControls.Movement.ReadValue<Vector2>();

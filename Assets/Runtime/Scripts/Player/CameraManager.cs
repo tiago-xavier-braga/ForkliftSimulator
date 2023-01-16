@@ -19,10 +19,10 @@ public class CameraManager : MonoBehaviour
     {
         inputActions = new PlayerInputActions();
         inputActions.PlayerControls.Enable();
-        inputActions.PlayerControls.Camera.performed += onCamereInput;
+        inputActions.PlayerControls.Camera.performed += onCameraInput;
     }
 
-    private void onCamereInput(InputAction.CallbackContext obj)
+    private void onCameraInput(InputAction.CallbackContext obj)
     {
         
         if (obj.control.name == "v")

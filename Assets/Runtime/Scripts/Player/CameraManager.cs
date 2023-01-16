@@ -8,14 +8,12 @@ using UnityEngine.InputSystem;
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera firstCM;
-    [SerializeField] CinemachineVirtualCamera thirdCM;
     [SerializeField] CinemachineVirtualCamera rightCM;
     [SerializeField] CinemachineVirtualCamera leftCM;
     private PlayerInputActions inputActions;
     private bool isRight = false;
     private bool isLeft = false;
     private bool isFirst = false;
-    private bool isThird = true;
 
     private void Awake()
     {
@@ -38,7 +36,6 @@ public class CameraManager : MonoBehaviour
                 isRight = false;
                 isLeft = false;
                 isFirst = true;
-                isThird = false;
             }
             else if (isFirst == true)
             {
@@ -46,7 +43,6 @@ public class CameraManager : MonoBehaviour
                 isRight = false;
                 isLeft = false;
                 isFirst = false;
-                isThird = true;
             }
         }
         if (obj.control.name == "q")
@@ -59,7 +55,6 @@ public class CameraManager : MonoBehaviour
                 isRight = false;
                 isLeft = true;
                 isFirst = false;
-                isThird = false;
             }
             else if (isLeft == true)
             {
@@ -67,7 +62,6 @@ public class CameraManager : MonoBehaviour
                 isRight = false;
                 isLeft = false;
                 isFirst = false;
-                isThird = true;
             }
         }
         if (obj.control.name == "e")
@@ -80,7 +74,6 @@ public class CameraManager : MonoBehaviour
                 isRight = true;
                 isLeft = false;
                 isFirst = false;
-                isThird = false;
             }
             else if (isRight == true)
             {
@@ -88,7 +81,6 @@ public class CameraManager : MonoBehaviour
                 isRight = false;
                 isLeft = false;
                 isFirst = false;
-                isThird = true;
             }
         }
     }

@@ -710,7 +710,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Empilhe as caixas espalhadas pelo mapa e ven\xE7a o labirinto. \r\n\r\nWASD
     para locomover a empilhadeira\r\nU ou J para controlar o garfo\r\nR para reposicionar
-    a empilhadeira\r\nEnter para abrir o menu\r\n"
+    a empilhadeira\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3cb4ec53460316846af3b924c726f07f, type: 2}
   m_sharedMaterial: {fileID: -5226038445292144676, guid: 3cb4ec53460316846af3b924c726f07f, type: 2}

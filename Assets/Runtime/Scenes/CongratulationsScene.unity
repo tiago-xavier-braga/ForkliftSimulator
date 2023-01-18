@@ -708,10 +708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Empilhe as caixas espalhadas pelo mapa e ven\xE7a o labirinto. \r\n\r\nWASD
-    para locomover a empilhadeira\r\nU ou J para controlar o garfo\r\nR para reposicionar
-    a empilhadeira\r\nE ou Q para utilizar as c\xE2meras laterais\nV para primeira
-    pessoa"
+  m_text: "Parab\xE9ns, voc\xEA finalizou o circuito !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3cb4ec53460316846af3b924c726f07f, type: 2}
   m_sharedMaterial: {fileID: -5226038445292144676, guid: 3cb4ec53460316846af3b924c726f07f, type: 2}
@@ -738,8 +735,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

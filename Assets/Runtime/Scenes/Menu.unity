@@ -2380,7 +2380,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: Sair
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac476ade67883a042a30774e097fa74c, type: 2}
   m_sharedMaterial: {fileID: -5226038445292144676, guid: 3cb4ec53460316846af3b924c726f07f, type: 2}
@@ -2515,7 +2515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start Game
+  m_text: "Come\xE7ar o jogo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac476ade67883a042a30774e097fa74c, type: 2}
   m_sharedMaterial: {fileID: -5226038445292144676, guid: 3cb4ec53460316846af3b924c726f07f, type: 2}
@@ -2744,9 +2744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Instructions
-
-'
+  m_text: "Intru\xE7\xF5es"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac476ade67883a042a30774e097fa74c, type: 2}
   m_sharedMaterial: {fileID: -5226038445292144676, guid: 3cb4ec53460316846af3b924c726f07f, type: 2}
